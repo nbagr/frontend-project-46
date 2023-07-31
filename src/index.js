@@ -1,6 +1,6 @@
 import path from 'node:path';
 import _ from 'lodash';
-import parser from './parser.js';
+import parser from './parsers.js';
 
 const resolvePath = (filePath) => (filePath.includes('__fixtures__')
   ? path.resolve(process.cwd(), filePath)
