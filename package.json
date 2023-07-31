@@ -1,7 +1,7 @@
 {
   "name": "@hexlet/code",
   "version": "1.0.0",
-  "description": "[![Actions Status](https://github.com/nbagr/frontend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/nbagr/frontend-project-46/actions)",
+  "description": "hexlet project difference",
   "main": "bin/gendiff.js",
   "type": "module",
   "scripts": {
@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "commander": "^10.0.0",
+    "js-yaml": "^4.1.0",
     "lodash": "^4.17.21"
   },
   "devDependencies": {
