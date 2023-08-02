@@ -1,6 +1,6 @@
+import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import yaml from 'js-yaml';
-import { readFileSync } from 'node:fs';
 
 const getExtension = (filename) => path.extname(filename);
 
