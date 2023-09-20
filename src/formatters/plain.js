@@ -2,7 +2,7 @@ import _ from 'lodash';
 
 const getPath = (nodeNames) => nodeNames.flat().join('.');
 
-const checkVal = (value) => {
+const getFormattedValue = (value) => {
   switch (typeof value) {
     case 'object': {
       return !value ? 'null' : '[complex value]';
@@ -24,13 +24,13 @@ export function makePlainDiff(tree) {
         return iter(child.children, currentPath);
       }
       case 'added': {
-        return `Property '${currentPath}' was added with value: ${checkVal(child.value)}`;
+        return `Property '${currentPath}' was added with value: ${getFormattedValue(child.value)}`;
       }
       case 'removed': {
         return `Property '${currentPath}' was removed`;
       }
       case 'changed': {
-        return `Property '${currentPath}' was updated. From ${checkVal(child.value)} to ${checkVal(child.value2)}`;
+        return `Property '${currentPath}' was updated. From ${getFormattedValue(child.oldValue)} to ${getFormattedValue(child.newValue)}`;
       }
       case 'unchanged': {
         return null;
@@ -45,7 +45,5 @@ export function makePlainDiff(tree) {
 
 export default function makePlain(data) {
   const result = makePlainDiff(data);
-  const flatten = _.flattenDeep(result);
-  const filtered = flatten.filter((el) => el);
-  return filtered.join('\n');
+  return _.flattenDeep(result).filter((el) => el).join('\n');
 }
